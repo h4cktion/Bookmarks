@@ -21,13 +21,21 @@ function Preview() {
 
   return (
     <div>
-      <h1>Preview</h1>
+      <div>
+        <h1>Preview</h1>
+        {bookmark?.html && (
+          <div
+            className="content"
+            dangerouslySetInnerHTML={{ __html: bookmark?.html }}
+          ></div>
+        )}
+      </div>
       <div>
         <h2>Details</h2>
         <ul>
           {bookmark &&
             (Object.keys(bookmark) as (keyof typeof bookmark)[]).map((key) => {
-              if (key === "id") return;
+              if (key === "id" || key === "html") return;
               return <li key={key}>{`${key} : ${bookmark[key]}`}</li>;
             })}
         </ul>

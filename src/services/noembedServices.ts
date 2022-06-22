@@ -21,6 +21,7 @@ export const fetchPhotoAndVideoInfo = async (
         title: result.title,
         uploadDate: getFormatedDate(new Date(result.upload_date)),
         addedDate: new Date(),
+        html: result.html,
       };
     case PHOTO:
       return {
@@ -32,6 +33,7 @@ export const fetchPhotoAndVideoInfo = async (
         title: result.title,
         uploadDate: getFormatedDate(new Date(result.upload_date)),
         addedDate: new Date(),
+        html: result.html,
       };
     default:
       return null;

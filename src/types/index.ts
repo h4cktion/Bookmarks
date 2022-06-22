@@ -7,6 +7,7 @@ export interface videoBookmark {
   uploadDate: string;
   duration: string;
   type: string;
+  html?: string;
 }
 
 export interface photoBookmark {
@@ -18,6 +19,7 @@ export interface photoBookmark {
   uploadDate: string;
   dimension: number;
   type: string;
+  html?: string;
 }
 
 export interface stateType {

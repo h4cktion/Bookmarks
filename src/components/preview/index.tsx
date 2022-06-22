@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../context";
+import { getTimeSinceNow } from "../../helpers/dateHelpers";
 import { photoBookmark, videoBookmark } from "../../types";
 
 function Preview() {
@@ -10,12 +11,12 @@ function Preview() {
   >(null);
 
   useEffect(() => {
-    const bMToShow = appContext?.bookmarks.find(
+    const bookmarkToShow = appContext?.bookmarks.find(
       (b: photoBookmark | videoBookmark) =>
         b.id === appContext?.idBookmarkToShow
     );
-    if (bMToShow) {
-      setBookmark(bMToShow);
+    if (bookmarkToShow) {
+      setBookmark(bookmarkToShow);
     }
   }, [appContext?.idBookmarkToShow]);
 
@@ -36,7 +37,13 @@ function Preview() {
           {bookmark &&
             (Object.keys(bookmark) as (keyof typeof bookmark)[]).map((key) => {
               if (key === "id" || key === "html") return;
-              return <li key={key}>{`${key} : ${bookmark[key]}`}</li>;
+              return (
+                <li key={key}>{`${key} : ${
+                  key === "addedDate"
+                    ? getTimeSinceNow(bookmark.addedDate)
+                    : bookmark[key]
+                }`}</li>
+              );
             })}
         </ul>
       </div>

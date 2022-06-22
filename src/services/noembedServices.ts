@@ -1,5 +1,5 @@
 import { PHOTO, VIDEO } from "../constants";
-import { getFormatedDate } from "../helpers/dateHelpers";
+import { formatDuration, getFormatedDate } from "../helpers/dateHelpers";
 import { photoBookmark, videoBookmark } from "../types";
 
 export const fetchPhotoAndVideoInfo = async (
@@ -16,11 +16,11 @@ export const fetchPhotoAndVideoInfo = async (
         id,
         url,
         author: result.author_name,
-        duration: result.duration,
+        duration: formatDuration(result.duration),
         type: result.type,
         title: result.title,
         uploadDate: getFormatedDate(new Date(result.upload_date)),
-        addedDate: new Date(),
+        addedDate: new Date().getTime(),
         html: result.html,
       };
     case PHOTO:
@@ -32,7 +32,7 @@ export const fetchPhotoAndVideoInfo = async (
         type: result.type,
         title: result.title,
         uploadDate: getFormatedDate(new Date(result.upload_date)),
-        addedDate: new Date(),
+        addedDate: new Date().getTime(),
         html: result.html,
       };
     default:

@@ -3,7 +3,7 @@ export interface videoBookmark {
   url: string;
   title: string;
   author: string;
-  addedDate: Date;
+  addedDate: number;
   uploadDate: string;
   duration: string;
   type: string;
@@ -15,7 +15,7 @@ export interface photoBookmark {
   url: string;
   title: string;
   author: string;
-  addedDate: Date;
+  addedDate: number;
   uploadDate: string;
   dimension: number;
   type: string;

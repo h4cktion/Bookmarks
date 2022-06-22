@@ -1,4 +1,5 @@
 export interface videoBookmark {
+  id: string;
   url: string;
   title: string;
   author: string;
@@ -9,6 +10,7 @@ export interface videoBookmark {
 }
 
 export interface photoBookmark {
+  id: string;
   url: string;
   title: string;
   author: string;
@@ -24,7 +26,7 @@ export interface stateType {
 
 export interface action {
   type: string;
-  payload: photoBookmark | videoBookmark;
+  payload: photoBookmark | videoBookmark | string;
 }
 
 export interface inputPropsType {

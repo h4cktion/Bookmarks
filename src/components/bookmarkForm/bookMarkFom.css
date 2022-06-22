@@ -1,0 +1,6 @@
+.addBookmark{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10%;
+  gap: 5px;
+}

@@ -21,6 +21,7 @@
 }
 .preview {
   flex: 1;
+  margin-left: 2%;
 }
 
 @media (prefers-reduced-motion: no-preference) {

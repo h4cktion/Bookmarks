@@ -22,6 +22,7 @@ export interface photoBookmark {
 
 export interface stateType {
   bookmarks: (photoBookmark | videoBookmark)[];
+  idBookmarkToShow: string | null;
 }
 
 export interface action {

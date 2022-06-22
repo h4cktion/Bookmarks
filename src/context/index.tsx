@@ -10,6 +10,7 @@ export const BookmarksProvider = (props: any) => {
   const bookmarks: (photoBookmark | videoBookmark)[] = [];
   const defaultState = {
     bookmarks,
+    idBookmarkToShow: null,
   };
 
   const [state, dispatch] = useReducer(bookmarkReducer, defaultState);

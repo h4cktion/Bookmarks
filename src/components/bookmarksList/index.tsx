@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AppContext, DispatchContext } from "../../context";
-import { DELETE_BOOKMARK } from "../../reducers/actionsType";
+import { DELETE_BOOKMARK, SHOW_DETAIL } from "../../reducers/actionsType";
 import "./bookmarksList.css";
 
 function BookmarksList() {
@@ -11,14 +11,18 @@ function BookmarksList() {
     dispatch({ type: DELETE_BOOKMARK, payload: e.currentTarget.id });
   };
 
+  const showDetail = (e: any): void => {
+    dispatch({ type: SHOW_DETAIL, payload: e.currentTarget.id });
+  };
+
   return (
     <div className="list">
       <h1>Bookmarks</h1>
       {appContext?.bookmarks &&
         appContext?.bookmarks.map((bookmark) => (
           <div key={bookmark.id} className="bookmark">
-            <div className="title">
-              {bookmark.title.replace(/(.{15})..+/, "$1...")}
+            <div className="title" id={bookmark.id} onClick={showDetail}>
+              {bookmark.title.replace(/(.{20})..+/, "$1...")}
             </div>
             <div className="trashDiv" onClick={deleteBookmark} id={bookmark.id}>
               <svg

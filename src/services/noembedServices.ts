@@ -8,10 +8,7 @@ export const fetchPhotoAndVideoInfo = async (
   const response = await fetch(`https://noembed.com/embed?url=${url}`);
   const result = await response.json();
   if (result.error) return null;
-  console.log(
-    "new Date().getTime().toString()",
-    new Date().getTime().toString()
-  );
+
   const id = `id_${new Date().getTime().toString()}`; // normalement j'utilise UUID
   switch (result.type) {
     case VIDEO:

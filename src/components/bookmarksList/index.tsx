@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { AppContext } from "../../context";
-import { stateType } from "../../types";
 
 function BookmarksList() {
   const appContext = useContext(AppContext);

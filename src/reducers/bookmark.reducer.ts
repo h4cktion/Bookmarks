@@ -1,10 +1,12 @@
-import { action, photoBookmark, stateType, videoBookmark } from "../types";
+import { action, stateType } from "../types";
 import { ADD_URL } from "./actionsType";
 
 const bookmarkReducer = (state: stateType, action: action): any => {
-  switch (action.type) {
+  const { type, payload } = action;
+
+  switch (type) {
     case ADD_URL:
-      return { ...state, bookmarks: [...state.bookmarks, action.payload] };
+      return { ...state, bookmarks: [...state.bookmarks, payload] };
     default:
       return state;
   }

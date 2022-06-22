@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { DispatchContext } from "../../context";
 import { ADD_URL } from "../../reducers/actionsType";
+import { fetchPhotoAndVideoInfo } from "../../services/noembedServices";
 
 function BookmarkForm() {
   const dispatch = useContext(DispatchContext);
@@ -10,10 +11,12 @@ function BookmarkForm() {
     setUrl(e.currentTarget.value);
   };
 
-  const handleSubmit = (event: React.SyntheticEvent) => {
+  const handleSubmit = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    console.log("url to save", url);
-    dispatch({ action: ADD_URL, payload: url });
+
+    const newbookmark = await fetchPhotoAndVideoInfo(url);
+    if (!newbookmark) return;
+    dispatch({ type: ADD_URL, payload: newbookmark });
   };
   return (
     <form onSubmit={handleSubmit}>
